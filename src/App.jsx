@@ -33,6 +33,7 @@ function App() {
 const fetchUser= async ()=>{
   try{
 const res=await axios.get(`${import.meta.env.VITE_BACK_URL}api/auth/getuser`,{withCredentials:true});
+console.log(res);
 if(res.data.status){
   
   SetUser(res.data.user);
@@ -43,6 +44,7 @@ if(res.data.status){
 }
   }catch(err){
     SetUser({});
+    console.log(err);
 SetAuthorized(false);
   }
 }
