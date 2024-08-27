@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { easeInOut, motion } from 'framer-motion';
 import { MdOutlinePersonSearch } from "react-icons/md";
+import toast from 'react-hot-toast';
 const PostJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,6 +25,11 @@ const PostJob = () => {
       try {
         const response = await axios.get('https://restcountries.com/v3.1/all');
         setCountries(response.data);
+        if(response.data.status){
+          toast.success("Job Posted")
+        }else{
+          toast.error("Failed to post job")
+        }
       } catch (error) {
         console.error('Error fetching countries:', error);
       }
