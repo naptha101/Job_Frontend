@@ -27,7 +27,7 @@ const Profile = () => {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/auth/getby/${id}`, { withCredentials: true });
+      const res = await axios.get(`${import.meta.env.VITE_BACK_URL}api/auth/getby/${id}`, { withCredentials: true });
       if (!res.data.status) {
         setError(true);
       } else {
@@ -50,7 +50,7 @@ const Profile = () => {
   const updateFunction = async () => {
     try {
       const formData = new FormData();
-      await axios.put(`http://localhost:8000/api/auth/update/${id}`, {
+      await axios.put(`${import.meta.env.VITE_BACK_URL}api/auth/update/${id}`, {
         username: updateInfo.username,
         email: updateInfo.email,
         phone: updateInfo.phone,
@@ -73,7 +73,7 @@ const Profile = () => {
     try {
       const formData = new FormData();
       formData.append('resume', updateInfo.resume);
-      const res = await axios.post(`http://localhost:8000/api/auth/setresume/${id}`, formData, { withCredentials: true });
+      const res = await axios.post(`${import.meta.env.VITE_BACK_URL}api/auth/setresume/${id}`, formData, { withCredentials: true });
       localStorage.setItem("user", JSON.stringify(res.data.ek));
       setUpdateInfo({
         ...updateInfo,

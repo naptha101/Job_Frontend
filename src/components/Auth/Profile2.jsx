@@ -17,7 +17,7 @@ const Profile2 = () => {
   const [createdAt, setCreatedAt] = useState('');
    const {user}=useContext(Context);
   const fetchUser = async () => {
-    await axios.get(`http://localhost:8000/api/auth/getby/${id}`, { withCredentials: true }).then((res) => {
+    await axios.get(`${import.meta.env.VITE_BACK_URL}api/auth/getby/${id}`, { withCredentials: true }).then((res) => {
       setUser(res.data.data);
       console.log(res.data.data)
       setCreatedAt(formatDate(res.data.data.createdAt));
@@ -39,7 +39,7 @@ const Profile2 = () => {
   
   const fetchJobs = async (id) => {
     try {
-      const res = await axios.post('http://localhost:8000/api/jobs/getallfor',{id2:id});
+      const res = await axios.post(`${import.meta.env.VITE_BACK_URL}api/jobs/getallfor`,{id2:id});
       if (res.data.status === true) {
         setJobs(res.data.jobs); // Corrected typo here
       }
@@ -53,7 +53,7 @@ const Profile2 = () => {
     try {
    //   console.log(e);
         const expert={name:e.username,price:e.expertDes.fees,id:e._id};
-      const response = await axios.post('http://localhost:8000/payment', { expert:expert });
+      const response = await axios.post(`${import.meta.env.VITE_BACK_URL}payment`, { expert:expert });
      console.log(response)
       const { sessionId } = response.data;
       const stripePromise = loadStripe('pk_test_51OuqngSC1axPl2WrFWcObEpnJCc7pEA03sCG9rwxYuyWyddAgLQpG9MCWQGGAw5h73dGJEkGvUrV5lkDYD9jhsDv00o1ozRFtD');
@@ -74,7 +74,7 @@ const Profile2 = () => {
   const SendMail = async (e) => {
     try {
        // console.log(expert);
-      const mail = await axios.post('http://localhost:8000/api/expert/send', { email:user.email, User: user._id,ExpId:e._id });
+      const mail = await axios.post(`${import.meta.env.VITE_BACK_URL}/api/expert/send`, { email:user.email, User: user._id,ExpId:e._id });
       console.log(mail);
 
     } catch (err) {
