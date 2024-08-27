@@ -28,6 +28,7 @@ const Login = () => {
       );
 
       if (response.data.status) {
+        console.log(response);
         SetAuthorized(true);
         SetUser(response.data.existingUser);
         localStorage.setItem("user", JSON.stringify(response.data.existingUser));

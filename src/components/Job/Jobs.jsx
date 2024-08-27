@@ -25,7 +25,7 @@ const Jobs = () => {
 
   const fetchJobs = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/jobs/getall', { withCredentials: true });
+      const res = await axios.get(`${import.meta.env.VITE_BACK_URL}api/jobs/getall`, { withCredentials: true });
       if (res.data.status === true) {
         setCopy(res.data.jobs);
         setJobs(res.data.jobs);
@@ -44,7 +44,7 @@ const Jobs = () => {
     try{
       console.log(by);
       //console.log(e.postedBy);
-const data=await axios.get(`http://localhost:8000/api/auth/getby/${e.postedBy}`).then((data)=>{
+const data=await axios.get(`${import.meta.env.VITE_BACK_URL}api/auth/getby/${e.postedBy}`).then((data)=>{
   setBy([...by,by.push(data.data.data)])
 console.log(by[i]);
 })
