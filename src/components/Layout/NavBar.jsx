@@ -58,7 +58,7 @@ const NavBar = () => {
   return (
     <div className={`transition-transform duration-100 ${isHidden ? '-translate-y-full' : 'translate-y-0'} flex flex-row justify-between fixed top-0 w-full h-[50px] p-1 py-2 bg-[#3652AD]`}>
       <div className='hover:cursor-pointer p-1 flex flex-row items-center justify-center gap-3'>
-        <MdMapsHomeWork color='white' size={30} />
+        <MdMapsHomeWork onClick={()=>{navigate('/')}} color='white' size={30} />
         <p className='text-xl font-serif text-white font-bold'>Job Ease</p>
       </div>
 
