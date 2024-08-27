@@ -44,6 +44,7 @@ const NavBar = () => {
       console.log(res);
       if (res) {
         SetAuthorized(false);
+        SetUser({});
         toast.success(res.data.message);
         localStorage.removeItem("user");
         navigate('/login');
