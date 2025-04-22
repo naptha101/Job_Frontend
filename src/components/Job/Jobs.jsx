@@ -90,7 +90,7 @@ toast.success(err);
   return (
     <div className='flex flex-col md:flex-row min-h-screen  max-h-fit w-full'>
       <div className='flex flex-row my-12 w-3/10 mx-8 py-6  '>
-        <fieldset className='border-2 rounded-sm border border-[#3652AD]   '>
+        <fieldset className='border-2 rounded-sm  border-[#3652AD]   '>
           <legend className='p-1 text-md'>Filters</legend>
           <form className='p-2 w-full flex-col md:flex-row h-full' onSubmit={handleFilter}>
             <div className='flex flex-row items-center gap-1 p-2'>

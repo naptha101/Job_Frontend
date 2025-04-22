@@ -11,7 +11,7 @@ const Home = () => {
 const navigate=useNavigate();
 
 if(!isAuthorized){
-  navigate('/login');
+ // navigate('/login');
 }
 useEffect(()=>{
 SetNav("Home");
